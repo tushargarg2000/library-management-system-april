@@ -4,7 +4,11 @@ import com.acciojob.librarymanagementsystemApril.Enum.Genre;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +24,7 @@ import lombok.Setter;
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookId;
 
     private String bookName;
@@ -30,4 +35,8 @@ public class Book {
 
     @Enumerated(value = EnumType.STRING)
     private Genre genre;
+
+    @JoinColumn
+    @ManyToOne
+    private Author author;
 }

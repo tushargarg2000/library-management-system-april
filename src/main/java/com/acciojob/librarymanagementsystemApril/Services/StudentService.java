@@ -16,9 +16,7 @@ public class StudentService {
     public String addStudent(Student student){
 
         studentRepository.save(student);
-
         return "Student has been saved to the DB";
-
     }
 
     public List<Student> findAllStudents(){
